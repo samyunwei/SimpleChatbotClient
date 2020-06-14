@@ -1,0 +1,16 @@
+syntax = "proto3";
+package simplechatbot;
+
+service SimpleChatBotServer {
+    rpc Chat (ChatRequest) returns (ChatReply);
+}
+
+message ChatRequest {
+    string ids = 1;
+    string data = 2;
+}
+
+message ChatReply {
+    string ids = 1;
+    string data = 2;
+}

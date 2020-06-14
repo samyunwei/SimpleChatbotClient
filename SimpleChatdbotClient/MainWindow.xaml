@@ -1,0 +1,23 @@
+﻿<Window x:Class="SimpleChatdbotClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimpleChatdbotClient"
+        mc:Ignorable="d"
+        Title="聊天机器人客户端" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="669*"/>
+            <ColumnDefinition Width="124*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="376*"/>
+            <RowDefinition Height="45*"/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="textBox_history" Margin="10,10,10.333,10" TextWrapping="Wrap" IsReadOnly="True" AcceptsReturn="True"/>
+        <TextBox x:Name="textBox_message" Margin="10,10,10.333,9.667" Grid.Row="1" TextWrapping="Wrap" Text="" MaxLength="100" MaxLines="1"/>
+        <Button x:Name="button" Content="发送" Grid.Column="1" Margin="10" Grid.Row="1" Click="button_Click"/>
+
+    </Grid>
+</Window>
