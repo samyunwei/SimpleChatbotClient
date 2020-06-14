@@ -31,7 +31,7 @@ namespace SimpleChatdbotClient
             InitializeComponent();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private async void button_Click(object sender, RoutedEventArgs e)
         {
             var addr = mConfig.IniReadValue("Server", "ADDR").ToString();
             var channel = new Channel(addr, ChannelCredentials.Insecure);
@@ -40,9 +40,10 @@ namespace SimpleChatdbotClient
             var rep = makeResponse("自己", message);
             textBox_history.AppendText(rep);
             textBox_message.Text = ""; 
-            var rep_data = client.Chat(message);
-
-            rep = makeResponse("聊天机器人", rep_data);
+            var task = client.ChatAsync(message);
+            await task;
+            await channel.ShutdownAsync();
+            rep = makeResponse("聊天机器人", task.Result);
             textBox_history.AppendText(rep);
         }
 

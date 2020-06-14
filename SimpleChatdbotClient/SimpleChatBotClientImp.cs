@@ -11,7 +11,7 @@ namespace SimpleChatdbotClient
     class SimpleChatBotClientImp
     {
         private Simplechatbot.SimpleChatBotServer.SimpleChatBotServerClient client;
-        private int id = 0;
+        static int id = 0;
 
         public SimpleChatBotClientImp(SimpleChatBotServer.SimpleChatBotServerClient client)
         {
@@ -34,7 +34,7 @@ namespace SimpleChatdbotClient
             {
                 var req = new Simplechatbot.ChatRequest();
                 id++;
-                req.Ids = $"id";
+                req.Ids = $"{id}";
                 req.Data = data;
                 using (var call = client.ChatAsync(req))
                 {
@@ -63,7 +63,7 @@ namespace SimpleChatdbotClient
             {
                 var req = new Simplechatbot.ChatRequest();
                 id++;
-                req.Ids = $"id";
+                req.Ids = $"{id}";
                 req.Data = data;
                 var rep = client.Chat(req);
                 return rep.Data;
