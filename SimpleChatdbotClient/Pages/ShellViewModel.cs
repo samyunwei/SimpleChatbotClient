@@ -80,6 +80,9 @@ namespace SimpleChatdbotClient.Pages
                     var rep = task.Result;
                     m_Messages.Add(new ChatMessage(){IsSend = false,Message = rep});
                 }
+
+                ShellView.GetInstance().textBox.Text = "";
+
             }
             catch (Exception exception)
             {

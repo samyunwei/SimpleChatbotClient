@@ -20,9 +20,17 @@ namespace SimpleChatdbotClient.Pages
     /// </summary>
     public partial class ShellView : Window
     {
+        private static ShellView _instance = null;
         public ShellView()
         {
             InitializeComponent();
+            _instance = this;
+        }
+
+
+        public static ShellView GetInstance()
+        {
+            return _instance;
         }
     }
 }
