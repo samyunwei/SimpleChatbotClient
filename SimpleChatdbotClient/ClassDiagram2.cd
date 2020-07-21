@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Simplechatbot.SimpleChatbotReflection">
+    <Position X="2.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Protos\SimpleChatbot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Simplechatbot.ChatRequest" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiAIACAEEAACYEgAAAAAIAAEEAAJAgAAgAAAAAABA=</HashCode>
+      <FileName>Protos\SimpleChatbot.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Simplechatbot.ChatReply" BaseTypeListCollapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiAIACAEEAACYEgAAAAAIAAEEAAJAgAAgAAAAAABA=</HashCode>
+      <FileName>Protos\SimpleChatbot.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Simplechatbot.SimpleChatBotServer">
+    <Position X="7.5" Y="3" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Simplechatbot.SimpleChatBotServer.SimpleChatBotServerBase" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Protos\SimpleChatbotGrpc.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Simplechatbot.SimpleChatBotServer.SimpleChatBotServerClient" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Protos\SimpleChatbotGrpc.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAEAAAAAAAAACAAAABgBAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Protos\SimpleChatbotGrpc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleChatdbotClient.Properties.Resources">
+    <Position X="9.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleChatdbotClient.Properties.Settings">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleChatdbotClient.App">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleChatdbotClient.IniFile">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAgAAAAAAACAAACAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IniFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleChatdbotClient.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAgAAAABAAAAAAAABgAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SimpleChatdbotClient.SimpleChatBotClientImp">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAgAAAgAAAAABAAAAgA=</HashCode>
+      <FileName>SimpleChatBotClientImp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

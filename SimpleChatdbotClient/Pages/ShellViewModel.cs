@@ -1,5 +1,10 @@
 ﻿using System;
+using Stylet;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using PropertyChanged;
+using System.ComponentModel;
+using System.Windows.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,74 +26,67 @@ using RestSharp;
 using RestSharp.Authenticators;
 using DataFormat = RestSharp.DataFormat;
 
-
-namespace SimpleChatdbotClient
+namespace SimpleChatdbotClient.Pages
 {
-    /// <summary>
-    /// MainWindow.xaml 的交互逻辑
-    /// </summary>
-    public partial class MainWindow : Window
+    public class ShellViewModel : Screen, INotifyPropertyChanged
     {
         private SimpleChatBotClientImp client;
         private IniFile mConfig;
-
-        public MainWindow()
-
+        private ObservableCollection<ChatMessage> m_Messages = new ObservableCollection<ChatMessage>();
+        public ObservableCollection<ChatMessage> Messages { get { return m_Messages; } }
+        public ShellViewModel()
         {
-            InitializeComponent();
+            mConfig = new IniFile("./cfg.ini");
+            Messages.Add(new ChatMessage() { IsSend = false, Message = "Hello" });
         }
 
-        private async void button_Click(object sender, RoutedEventArgs e)
+        public int SelectedMessage { get; set; }
+        public string Message { get; set; }
+
+        public bool CanSendMessage
         {
+            get { return !string.IsNullOrEmpty(Message); }
+        }
+        public async void SendMessage()
+        {
+            m_Messages.Add(new ChatMessage() { IsSend = true, Message = Message });
+
+            SelectedMessage = m_Messages.Count - 1;
             try
             {
                 var addr = mConfig.IniReadValue("Server", "ADDR").ToString();
                 var type = mConfig.IniReadValue("Server", "TYPE").ToString();
                 if (type.Equals("REST"))
                 {
-                    var message = textBox_message.Text;
-                    var rep = makeResponse("自己", message);
-                    textBox_history.AppendText(rep);
-                    textBox_message.Text = "";
+                    var themessage = Message;
                     var url_addr = string.Format("http://{0}", addr);
                     var client = new RestClient(url_addr);
                     var request = new RestRequest("receive", DataFormat.Json);
-                    request.AddParameter("msg",message);
+                    request.AddParameter("msg", themessage);
                     var raw = request.ToString();
                     var response = client.Get(request);
-                    var jresult = (JObject) JsonConvert.DeserializeObject(response.Content);
-                    rep = makeResponse("聊天机器人", jresult["intent"].ToString());
-                    textBox_history.AppendText(rep);
+                    var jresult = (JObject)JsonConvert.DeserializeObject(response.Content);
+                    var rep = jresult["intent"].ToString();
+                    m_Messages.Add(new ChatMessage(){IsSend = false,Message = rep });
                 }
                 else
                 {
                     var channel = new Channel(addr, ChannelCredentials.Insecure);
                     var client = new SimpleChatBotClientImp(new SimpleChatBotServer.SimpleChatBotServerClient(channel));
-                    var message = textBox_message.Text;
-                    var rep = makeResponse("自己", message);
-                    textBox_history.AppendText(rep);
-                    textBox_message.Text = "";
-                    var task = client.ChatAsync(message);
+                    var themessage = Message;
+                    var task = client.ChatAsync(themessage);
                     await task;
                     await channel.ShutdownAsync();
-                    rep = makeResponse("聊天机器人", task.Result);
-                    textBox_history.AppendText(rep);
+                    var rep = task.Result;
+                    m_Messages.Add(new ChatMessage(){IsSend = false,Message = rep});
                 }
             }
             catch (Exception exception)
             {
                 MessageBox.Show(exception.Message, "错误");
             }
-        }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            mConfig = new IniFile("./cfg.ini");
-        }
-
-        string makeResponse(string speaker, string data)
-        {
-            return string.Format("{0} ：\n       {1}\n", speaker, data);
+            //CollectionViewSource.GetDefaultView(m_Messages).MoveCurrentTo(m_Messages[m_Messages.Count - 1]);
         }
     }
 }
